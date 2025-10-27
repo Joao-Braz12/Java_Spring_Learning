@@ -1,9 +1,7 @@
 package dev.Braz.spring_1.Tournaments;
 
 import dev.Braz.spring_1.Player.PlayerModel;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +15,18 @@ import java.util.List;
 @Data
 public class TournamentModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long    id;
+
+    @Column(name = "name")
     private String  name;
+
+    @Column(name = "date")
     private String  date;
+
+    @Column(name = "winner")
     private Long    winner;
 
     @OneToMany(mappedBy = "tournament")

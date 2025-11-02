@@ -11,7 +11,7 @@ public class PlayerController {
         return  "Boas Vindas";
     }
 
-    @GetMapping("/allplayers")
+    @GetMapping("/list")
     public String AllPlayer(){
         return("All Players");
     }
@@ -26,12 +26,12 @@ public class PlayerController {
         return("All Players Id");
     }
 
-    @PutMapping("/updatebyid")
+    @PutMapping("/update")
     public String UpdatePlayerId(){
         return("Player Updated by Id");
     }
 
-    @DeleteMapping("/deletebyid")
+    @DeleteMapping("/delete")
     public String DeletedPlayerId(){
         return("Player Deletd by Id");
     }

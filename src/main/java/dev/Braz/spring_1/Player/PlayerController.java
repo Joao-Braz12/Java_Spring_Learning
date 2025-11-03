@@ -2,9 +2,17 @@ package dev.Braz.spring_1.Player;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/player")
 public class PlayerController {
+
+    private PlayerService playerService;
+
+    public PlayerController(PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
     @GetMapping("/wellcome")
     public String WellCome(){
@@ -12,8 +20,8 @@ public class PlayerController {
     }
 
     @GetMapping("/list")
-    public String AllPlayer(){
-        return("All Players");
+    public List<PlayerModel> ListPlayers(){
+        return playerService.listPlayers();
     }
 
     @PostMapping("/create")

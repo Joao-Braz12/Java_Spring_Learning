@@ -25,8 +25,8 @@ public class PlayerController {
     }
 
     @PostMapping("/create")
-    public String CreatePLayer(){
-        return("Player created");
+    public PlayerModel CreatePlayer(@RequestBody PlayerModel playerModel){
+        return playerService.CreatePlayer(playerModel);
     }
 
     @GetMapping("/list/{id}")

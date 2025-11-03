@@ -15,12 +15,16 @@ public class PlayerService {
         this.playerRepository = playerRepository;
     }
 
-    public List<PlayerModel> listPlayers(){
+    public List<PlayerModel> listPlayers() {
         return playerRepository.findAll();
     }
 
-    public PlayerModel listPlayerById(Long id){
+    public PlayerModel listPlayerById(Long id) {
         Optional<PlayerModel> playerModel = playerRepository.findById(id);
         return playerModel.orElse(null);
+    }
+
+    public PlayerModel CreatePlayer(PlayerModel player) {
+        return playerRepository.save(player);
     }
 }

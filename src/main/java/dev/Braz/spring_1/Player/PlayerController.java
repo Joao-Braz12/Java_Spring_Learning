@@ -29,9 +29,9 @@ public class PlayerController {
         return("Player created");
     }
 
-    @GetMapping("/allplayersid")
-    public String AllPlayerId(){
-        return("All Players Id");
+    @GetMapping("/list/{id}")
+    public PlayerModel ListById(@PathVariable Long id) {
+        return playerService.listPlayerById(id);
     }
 
     @PutMapping("/update")

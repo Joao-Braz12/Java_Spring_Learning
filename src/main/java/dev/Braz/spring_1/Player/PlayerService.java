@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerService {
@@ -16,5 +17,10 @@ public class PlayerService {
 
     public List<PlayerModel> listPlayers(){
         return playerRepository.findAll();
+    }
+
+    public PlayerModel listPlayerById(Long id){
+        Optional<PlayerModel> playerModel = playerRepository.findById(id);
+        return playerModel.orElse(null);
     }
 }

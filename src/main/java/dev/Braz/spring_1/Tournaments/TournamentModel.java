@@ -1,5 +1,6 @@
 package dev.Braz.spring_1.Tournaments;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.Braz.spring_1.Player.PlayerModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,5 +31,6 @@ public class TournamentModel {
     private Long    winner;
 
     @OneToMany(mappedBy = "tournament")
+    @JsonIgnore
     private List<PlayerModel>   playersList;
 }

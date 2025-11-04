@@ -34,13 +34,13 @@ public class PlayerController {
         return playerService.listPlayerById(id);
     }
 
-    @PutMapping("/update")
-    public String UpdatePlayerId(){
-        return("Player Updated by Id");
+    @PutMapping("/update/{id}")
+    public PlayerModel UpdatePlayerById(@PathVariable Long id, @RequestBody PlayerModel updated){
+        return playerService.UpdatePlayerById(id, updated);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void DeletedPlayerId(@PathVariable Long id){
+    public void DeletedPlayerById(@PathVariable Long id){
         playerService.DeletePlayerById(id);
     }
 }

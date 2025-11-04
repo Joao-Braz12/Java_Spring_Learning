@@ -31,4 +31,12 @@ public class PlayerService {
     public void DeletePlayerById(Long id) {
         playerRepository.deleteById(id);
     }
+
+    public PlayerModel UpdatePlayerById(Long id, PlayerModel updated) {
+        if(playerRepository.existsById(id)){
+            updated.setId(id);
+            return playerRepository.save(updated);
+        }
+        return null;
+    }
 }

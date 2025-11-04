@@ -39,8 +39,8 @@ public class PlayerController {
         return("Player Updated by Id");
     }
 
-    @DeleteMapping("/delete")
-    public String DeletedPlayerId(){
-        return("Player Deletd by Id");
+    @DeleteMapping("/delete/{id}")
+    public void DeletedPlayerId(@PathVariable Long id){
+        playerService.DeletePlayerById(id);
     }
 }

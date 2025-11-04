@@ -27,4 +27,8 @@ public class PlayerService {
     public PlayerModel CreatePlayer(PlayerModel player) {
         return playerRepository.save(player);
     }
+
+    public void DeletePlayerById(Long id) {
+        playerRepository.deleteById(id);
+    }
 }

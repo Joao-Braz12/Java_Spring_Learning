@@ -1,0 +1,2 @@
+ALTER TABLE tb_players
+ADD COLUMN number VARCHAR(255);

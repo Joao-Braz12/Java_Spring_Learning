@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class PlayerModel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long            id;

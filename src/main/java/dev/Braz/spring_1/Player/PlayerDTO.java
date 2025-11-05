@@ -16,5 +16,6 @@ public class PlayerDTO {
     private String          email;
     private String          deck;
     private TournamentModel tournament;
+    private String          number;
 
 }

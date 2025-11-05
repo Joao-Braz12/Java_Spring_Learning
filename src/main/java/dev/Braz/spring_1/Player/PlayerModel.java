@@ -15,11 +15,20 @@ import lombok.NoArgsConstructor;
 public class PlayerModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long            id;
+
+    @Column(name = "name")
     private String          name;
-    @Column(unique = true)
+
+    @Column(unique = true, name = "Email")
     private String          email;
+
+    @Column(name = "deck")
     private String          deck;
+
+    @Column(name = "number")
+    private String          number;
 
     @ManyToOne
     @JoinColumn(name = "tournament_id")

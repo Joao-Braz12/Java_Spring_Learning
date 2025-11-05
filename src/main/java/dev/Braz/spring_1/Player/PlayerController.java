@@ -25,8 +25,8 @@ public class PlayerController {
     }
 
     @PostMapping("/create")
-    public PlayerModel CreatePlayer(@RequestBody PlayerModel playerModel){
-        return playerService.CreatePlayer(playerModel);
+    public PlayerDTO CreatePlayer(@RequestBody PlayerDTO player){
+        return playerService.CreatePlayer(player);
     }
 
     @GetMapping("/list/{id}")

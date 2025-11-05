@@ -10,9 +10,11 @@ import java.util.Optional;
 public class PlayerService {
 
     private PlayerRepository playerRepository;
+    private PlayerMapper playerMapper;
 
-    public PlayerService(PlayerRepository playerRepository) {
+    public PlayerService(PlayerRepository playerRepository, PlayerMapper playerMapper) {
         this.playerRepository = playerRepository;
+        this.playerMapper = playerMapper;
     }
 
     public List<PlayerModel> listPlayers() {
@@ -24,8 +26,10 @@ public class PlayerService {
         return playerModel.orElse(null);
     }
 
-    public PlayerModel CreatePlayer(PlayerModel player) {
-        return playerRepository.save(player);
+    public PlayerDTO CreatePlayer(PlayerDTO playerDTO) {
+        PlayerModel player = playerMapper.map(playerDTO);
+        player = playerRepository.save(player);
+        return playerMapper.map(player);
     }
 
     public void DeletePlayerById(Long id) {

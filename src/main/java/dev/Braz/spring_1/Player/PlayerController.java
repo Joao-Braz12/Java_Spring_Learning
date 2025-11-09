@@ -20,7 +20,7 @@ public class PlayerController {
     }
 
     @GetMapping("/list")
-    public List<PlayerModel> ListPlayers(){
+    public List<PlayerDTO> ListPlayers(){
         return playerService.listPlayers();
     }
 
@@ -30,12 +30,12 @@ public class PlayerController {
     }
 
     @GetMapping("/list/{id}")
-    public PlayerModel ListById(@PathVariable Long id) {
+    public PlayerDTO ListById(@PathVariable Long id) {
         return playerService.listPlayerById(id);
     }
 
     @PutMapping("/update/{id}")
-    public PlayerModel UpdatePlayerById(@PathVariable Long id, @RequestBody PlayerModel updated){
+    public PlayerDTO UpdatePlayerById(@PathVariable Long id, @RequestBody PlayerDTO updated){
         return playerService.UpdatePlayerById(id, updated);
     }
 

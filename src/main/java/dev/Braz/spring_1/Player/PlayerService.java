@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PlayerService {
@@ -17,13 +18,16 @@ public class PlayerService {
         this.playerMapper = playerMapper;
     }
 
-    public List<PlayerModel> listPlayers() {
-        return playerRepository.findAll();
+    public List<PlayerDTO> listPlayers() {
+        List<PlayerModel> players = playerRepository.findAll();
+        return players.stream()
+                .map(playerMapper::map)
+                .collect(Collectors.toList());
     }
 
-    public PlayerModel listPlayerById(Long id) {
+    public PlayerDTO listPlayerById(Long id) {
         Optional<PlayerModel> playerModel = playerRepository.findById(id);
-        return playerModel.orElse(null);
+        return playerModel.map(playerMapper::map).orElse(null);
     }
 
     public PlayerDTO CreatePlayer(PlayerDTO playerDTO) {
@@ -36,10 +40,12 @@ public class PlayerService {
         playerRepository.deleteById(id);
     }
 
-    public PlayerModel UpdatePlayerById(Long id, PlayerModel updated) {
-        if(playerRepository.existsById(id)){
-            updated.setId(id);
-            return playerRepository.save(updated);
+    public PlayerDTO UpdatePlayerById(Long id, PlayerDTO updated) {
+        Optional<PlayerModel> player = playerRepository.findById(id);
+        if(player.isPresent()){
+            PlayerModel updatedModel = playerMapper.map(updated);
+            updatedModel.setId(id);
+            return  playerMapper.map(playerRepository.save(updatedModel));
         }
         return null;
     }

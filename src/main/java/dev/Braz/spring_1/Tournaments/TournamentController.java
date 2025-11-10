@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/tournament")
 public class TournamentController {
 
-    @GetMapping("/List")
+    @GetMapping("/list")
     public String List(){
         return ("Tournament Listed");
     }

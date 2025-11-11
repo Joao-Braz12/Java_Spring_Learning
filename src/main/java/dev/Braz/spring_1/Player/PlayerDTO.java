@@ -4,7 +4,6 @@ import dev.Braz.spring_1.Tournaments.TournamentModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +16,4 @@ public class PlayerDTO {
     private String          deck;
     private TournamentModel tournament;
     private String          number;
-
 }

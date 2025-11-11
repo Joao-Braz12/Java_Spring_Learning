@@ -1,5 +1,8 @@
 package dev.Braz.spring_1.Player;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,7 @@ public class PlayerController {
     }
 
     @GetMapping("/wellcome")
+    @Operation(summary="Wellcome Message",description="Gives user a wellcome message")
     public String WellCome(){
         return  "Boas Vindas";
     }
@@ -29,6 +33,11 @@ public class PlayerController {
     }
 
     @PostMapping("/create")
+    @Operation(summary="Create a new player", description = "Route creates a new player")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Player created"),
+            @ApiResponse(responseCode = "400", description = "Error on player creation")
+    })
     public ResponseEntity<?> CreatePlayer(@RequestBody PlayerDTO player){
         PlayerDTO NewPlayer = playerService.CreatePlayer(player);
         return ResponseEntity.status(HttpStatus.CREATED)

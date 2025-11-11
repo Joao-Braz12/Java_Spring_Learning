@@ -20,7 +20,7 @@ public class TournamentMapper {
     public TournamentModel map(TournamentDTO t_DTO)
     {
         TournamentModel t_Model = new TournamentModel();
-        t_Model.setId(t_DTO.getId());
+        t_Model.setId(t_Model.getId());
         t_Model.setDate(t_DTO.getDate());
         t_Model.setName(t_DTO.getName());
         t_Model.setWinner(t_DTO.getWinner());

@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: docker-lesson-container
+    environment:
+      POSTGRES_DB: dockerlesson
+      POSTGRES_USER: adminuser
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5431:5432"
+    restart: always
